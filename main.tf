@@ -16,6 +16,13 @@ resource "azurerm_mssql_database" "this" {
   sku_name    = var.sku_name
   max_size_gb = var.max_size_gb
 
+  long_term_retention_policy {
+    weekly_retention  = var.ltr_weekly_retention
+    monthly_retention = var.ltr_monthly_retention
+    yearly_retention  = var.ltr_yearly_retention
+    week_of_year      = var.ltr_week_of_year
+  }
+
   tags = var.tags
 }
 
