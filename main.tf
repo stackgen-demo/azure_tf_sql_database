@@ -1,3 +1,9 @@
+locals {
+  tags = merge(var.tags, {
+    Name = var.server_name
+  })
+}
+
 resource "azurerm_mssql_server" "this" {
   name                         = var.server_name
   resource_group_name          = var.resource_group_name
@@ -7,7 +13,7 @@ resource "azurerm_mssql_server" "this" {
   administrator_login_password = var.admin_password
   minimum_tls_version          = "1.2"
 
-  tags = var.tags
+  tags = local.tags
 }
 
 resource "azurerm_mssql_database" "this" {
@@ -16,7 +22,7 @@ resource "azurerm_mssql_database" "this" {
   sku_name    = var.sku_name
   max_size_gb = var.max_size_gb
 
-  tags = var.tags
+  tags = local.tags
 }
 
 resource "azurerm_mssql_firewall_rule" "allow_azure_services" {
