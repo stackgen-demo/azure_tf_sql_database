@@ -45,3 +45,4 @@ module "sql" {
 | database_id | Database resource ID |
 | database_name | Database name |
 | connection_string | ADO.NET connection string (sensitive) |
+Added LTR submodule scaffolding (modules/long_term_retention) with default 13-month retention.

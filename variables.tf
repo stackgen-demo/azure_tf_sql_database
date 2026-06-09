@@ -49,3 +49,33 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "long_term_retention_enabled" {
+  description = "Whether to enable the Long-Term Retention (LTR) policy on the SQL database."
+  type        = bool
+  default     = true
+}
+
+variable "long_term_retention_weekly" {
+  description = "Weekly LTR retention (ISO 8601 duration, e.g. P12W). Optional."
+  type        = string
+  default     = null
+}
+
+variable "long_term_retention_monthly" {
+  description = "Monthly LTR retention (ISO 8601 duration). Defaults to P13M (13 months) per requirement."
+  type        = string
+  default     = "P13M"
+}
+
+variable "long_term_retention_yearly" {
+  description = "Yearly LTR retention (ISO 8601 duration, e.g. P5Y). Optional."
+  type        = string
+  default     = null
+}
+
+variable "long_term_retention_week_of_year" {
+  description = "Week of year (1-52) for the yearly LTR backup. Required by Azure if long_term_retention_yearly is set."
+  type        = number
+  default     = null
+}

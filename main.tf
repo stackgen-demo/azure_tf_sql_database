@@ -10,11 +10,31 @@ resource "azurerm_mssql_server" "this" {
   tags = var.tags
 }
 
+module "long_term_retention" {
+  source = "./modules/long_term_retention"
+
+  enabled           = var.long_term_retention_enabled
+  weekly_retention  = var.long_term_retention_weekly
+  monthly_retention = var.long_term_retention_monthly
+  yearly_retention  = var.long_term_retention_yearly
+  week_of_year      = var.long_term_retention_week_of_year
+}
+
 resource "azurerm_mssql_database" "this" {
   name        = var.database_name
   server_id   = azurerm_mssql_server.this.id
   sku_name    = var.sku_name
   max_size_gb = var.max_size_gb
+
+  dynamic "long_term_retention_policy" {
+    for_each = module.long_term_retention.enabled ? [module.long_term_retention.policy] : []
+    content {
+      weekly_retention  = long_term_retention_policy.value.weekly_retention
+      monthly_retention = long_term_retention_policy.value.monthly_retention
+      yearly_retention  = long_term_retention_policy.value.yearly_retention
+      week_of_year      = long_term_retention_policy.value.week_of_year
+    }
+  }
 
   tags = var.tags
 }
