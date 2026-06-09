@@ -14,7 +14,9 @@ module "sql" {
   location            = "eastus"
   admin_login         = "sqladmin"
   admin_password      = "P@ssw0rd1234!"
-  sku_name            = "Basic"
+  sku_name            = "BC_Gen5_2"
+  max_size_gb         = 32
+  zone_redundant      = true
 
   tags = {
     environment = "workshop"
@@ -34,6 +36,7 @@ module "sql" {
 | admin_password | SQL admin password | string | — | yes |
 | sku_name | Database SKU | string | `Basic` | no |
 | max_size_gb | Max DB size in GB | number | `2` | no |
+| zone_redundant | Enable availability zone redundancy for supported Premium and Business Critical database SKUs | bool | `false` | no |
 | tags | Resource tags | map(string) | `{}` | no |
 
 ## Outputs

@@ -1,0 +1,13 @@
+terraform_version=1.15.5
+::group::terraform validate .
+[0m[1mInitializing provider plugins found in the configuration...[0m
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.76.0
+
+
+
+
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[32m[1mSuccess![0m The configuration is valid.
+[0m
+::endgroup::

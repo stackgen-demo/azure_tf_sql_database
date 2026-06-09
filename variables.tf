@@ -44,6 +44,12 @@ variable "max_size_gb" {
   default     = 2
 }
 
+variable "zone_redundant" {
+  description = "Whether to enable availability zone redundancy for the database. Azure only supports this for Premium and Business Critical databases."
+  type        = bool
+  default     = false
+}
+
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
