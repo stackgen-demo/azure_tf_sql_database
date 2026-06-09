@@ -44,6 +44,12 @@ variable "max_size_gb" {
   default     = 2
 }
 
+variable "zone_redundant" {
+  description = "Whether the database is zone redundant (spans multiple Availability Zones). Only supported on Premium and Business Critical service tiers, and General Purpose / Hyperscale tiers in supported regions."
+  type        = bool
+  default     = false
+}
+
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)

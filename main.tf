@@ -11,10 +11,11 @@ resource "azurerm_mssql_server" "this" {
 }
 
 resource "azurerm_mssql_database" "this" {
-  name        = var.database_name
-  server_id   = azurerm_mssql_server.this.id
-  sku_name    = var.sku_name
-  max_size_gb = var.max_size_gb
+  name           = var.database_name
+  server_id      = azurerm_mssql_server.this.id
+  sku_name       = var.sku_name
+  max_size_gb    = var.max_size_gb
+  zone_redundant = var.zone_redundant
 
   tags = var.tags
 }
