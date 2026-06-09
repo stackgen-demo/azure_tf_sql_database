@@ -1,0 +1,1 @@
+Codex PR permission smoke test. Safe to close/delete.
