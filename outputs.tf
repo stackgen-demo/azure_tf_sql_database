@@ -23,3 +23,8 @@ output "connection_string" {
   value       = "Server=tcp:${azurerm_mssql_server.this.fully_qualified_domain_name},1433;Database=${azurerm_mssql_database.this.name};User ID=${var.admin_login};Password=${var.admin_password};Encrypt=true;Connection Timeout=30;"
   sensitive   = true
 }
+
+output "firewall_rule_id" {
+  description = "ID of the firewall rule"
+  value       = azurerm_mssql_firewall_rule.allow_azure_services.id
+}
