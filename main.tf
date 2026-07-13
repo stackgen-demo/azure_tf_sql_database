@@ -2,7 +2,7 @@ resource "azurerm_mssql_server" "this" {
   name                         = var.server_name
   resource_group_name          = var.resource_group_name
   location                     = var.location
-  version                      = "12.0"
+  version                      = var.server_version
   administrator_login          = var.admin_login
   administrator_login_password = var.admin_password
   minimum_tls_version          = "1.2"

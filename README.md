@@ -12,6 +12,7 @@ module "sql" {
   database_name       = "mydb"
   resource_group_name = "se-rg"
   location            = "eastus"
+  server_version      = "12.0"
   admin_login         = "sqladmin"
   admin_password      = "P@ssw0rd1234!"
   sku_name            = "Basic"
@@ -30,6 +31,7 @@ module "sql" {
 | database_name | Database name | string | — | yes |
 | resource_group_name | Resource group name | string | — | yes |
 | location | Azure region | string | — | yes |
+| server_version | Azure SQL server engine version | string | `12.0` | no |
 | admin_login | SQL admin username | string | — | yes |
 | admin_password | SQL admin password | string | — | yes |
 | sku_name | Database SKU | string | `Basic` | no |

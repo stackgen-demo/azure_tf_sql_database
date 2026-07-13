@@ -21,6 +21,12 @@ variable "location" {
   default     = "westus2"
 }
 
+variable "server_version" {
+  description = "Version of the Azure SQL server engine"
+  type        = string
+  default     = "12.0"
+}
+
 variable "admin_login" {
   description = "Administrator login for the SQL server"
   type        = string
