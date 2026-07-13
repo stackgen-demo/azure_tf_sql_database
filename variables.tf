@@ -44,6 +44,17 @@ variable "max_size_gb" {
   default     = 2
 }
 
+variable "monthly_retention" {
+  description = "Monthly long-term backup retention as an ISO 8601 duration (for example, P13M for 13 months)"
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.monthly_retention == null || can(regex("^P(?:[1-9]|[1-9][0-9]|1[01][0-9]|120)M$", var.monthly_retention))
+    error_message = "monthly_retention must be null or an ISO 8601 duration from P1M through P120M."
+  }
+}
+
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)

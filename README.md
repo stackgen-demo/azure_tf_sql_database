@@ -15,6 +15,7 @@ module "sql" {
   admin_login         = "sqladmin"
   admin_password      = "P@ssw0rd1234!"
   sku_name            = "Basic"
+  monthly_retention   = "P13M"
 
   tags = {
     environment = "workshop"
@@ -34,6 +35,7 @@ module "sql" {
 | admin_password | SQL admin password | string | — | yes |
 | sku_name | Database SKU | string | `Basic` | no |
 | max_size_gb | Max DB size in GB | number | `2` | no |
+| monthly_retention | Monthly long-term backup retention in ISO 8601 format (for example, `P13M` for 13 months) | string | `null` | no |
 | tags | Resource tags | map(string) | `{}` | no |
 
 ## Outputs
